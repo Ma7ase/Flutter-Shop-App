@@ -1,17 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-/*
 final List<String> images = [
-  'images/slideshow/1.jpeg',
-  'images/slideshow/2.jpg',
-  'images/slideshow/3.jpg',
-  'images/slideshow/4.jpg',
-  'images/slideshow/5.png',
-  'images/slideshow/6.jfif',
-  'images/slideshow/7.jfif'
+  "assets/slider1.jpeg",
+  "assets/slider2.jpg",
+  'assets/slider3.jpg',
+  'assets/slider4.jpg',
+  'assets/slider5.png',
+  'assets/slider6.webp',
+  'assets/slider7.webp'
 ];
-*/
+
+final List<String> images2 = [
+  "assets/slide_top_cat.jpg",
+  "assets/slide_top_cat.jpg",
+  "assets/slide_top_cat.jpg"
+];
+
+/*
 final List<String> images = [
   'https://mendoza.nd.edu/wp-content/uploads/2021/01/bits-e1611847851285-1440x810.jpeg',
   'https://images.squarespace-cdn.com/content/v1/5269fbd3e4b0eb2b76ccc1db/1599073040137-Z7B1K9GEAFASNS0R0MKC/best-computer-science-schools.jpg',
@@ -21,7 +27,7 @@ final List<String> images = [
   'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
   'https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80',
 ];
-
+*/
 class Home extends StatefulWidget {
   @override
   HomeState createState() => HomeState();
@@ -55,37 +61,47 @@ class HomeState extends State<Home> {
               ),
               itemBuilder: (context, index, realIdx) {
                 return Center(
-                    child: Image.network(images[index],
-                        fit: BoxFit.cover, width: 1000));
+                    child: Image.asset(images[index],
+                        //child: Image.network(images[index],
+                        fit: BoxFit.cover,
+                        width: 1000));
               },
             ),
-
-            Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  color: Colors.grey.withOpacity(0.1),
-                  child: const Text(
-                    "Best practice Definition & Meaning",
-                    style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.black),
+            Container(
+              height: 50,
+              color: Colors.white,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      color: Colors.grey.withOpacity(0.1),
+                      child: const Text(
+                        "Best practice Definition & Meaning",
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black),
+                      ),
+                    ),
                   ),
-                ),
-                Container(
-                  margin:
-                      EdgeInsets.only(right: 5, top: 5, left: 50, bottom: 5),
-                  height: 30,
-                  width: 80,
-                  // width: MediaQuery.of(context).size.width - 60,
-                  // ignore: prefer_const_constructors
-                  decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: const BorderRadius.all(Radius.circular(8))),
-                  child: Center(child: Text('SHOP')),
-                )
-              ],
+                  Expanded(
+                      child: Container(
+                    margin:
+                        EdgeInsets.only(right: 5, top: 5, left: 50, bottom: 5),
+                    height: 30,
+                    width: 80,
+                    // width: MediaQuery.of(context).size.width - 60,
+                    // ignore: prefer_const_constructors
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8))),
+                    child: Center(child: Text('SHOP')),
+                  )),
+                ],
+              ),
             ),
             //category
             Container(
@@ -118,7 +134,7 @@ class HomeState extends State<Home> {
                       ),
                       Container(
                         child: Text("Category1", textAlign: TextAlign.center),
-                      )
+                      ),
                     ]),
                   ),
                   Container(
@@ -242,12 +258,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 50,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -282,12 +338,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -322,12 +418,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -366,12 +502,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -406,12 +582,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -446,12 +662,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -541,19 +797,76 @@ class HomeState extends State<Home> {
                 ),
               ],
             ),
+            CarouselSlider.builder(
+              itemCount: images2.length,
+              options: CarouselOptions(
+                height: 170,
+                autoPlay: true,
+                aspectRatio: 2.0, viewportFraction: 1,
 
+                //enlargeCenterPage: true,
+              ),
+              itemBuilder: (context, index, realIdx) {
+                return Center(
+                    child: Image.asset(images2[index],
+                        //child: Image.network(images[index],
+                        fit: BoxFit.cover,
+                        width: 1000));
+              },
+            ),
+            /*
             Row(
               children: [
                 Expanded(
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -588,12 +901,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -628,12 +981,52 @@ class HomeState extends State<Home> {
                     child: Container(
                   color: Colors.grey.withOpacity(0.1),
                   child: Column(children: [
-                    Container(
+                    /*Container(
                       margin: EdgeInsets.only(bottom: 5),
                       child: Image.asset(
                         "assets/hp1.jfif",
                       ),
-                    ),
+                    ),*/
+                    Stack(children: [
+                      const Center(
+                        child: FadeInImage(
+                            placeholder: AssetImage('assets/hp1.jfif'),
+                            image: AssetImage('assets/hp1.jfif')),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 60,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        child: Image.asset(
+                          'assets/star.png',
+                        ),
+                      ),
+                      Container(
+                        //margin: EdgeInsets.only(left: 90),
+                        margin: EdgeInsets.only(left: 70, top: 60),
+
+                        //alignment: Alignment.bottomCenter,
+                        height: 20, width: 70,
+                        //color: Colors.blueGrey.withOpacity(0.4),
+                        //color: Colors.blueGrey.withOpacity(0.5),
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                            color: Colors.blueGrey.withOpacity(0.5),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(6))),
+                        child: const Center(
+                          child: Text('3 KM',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                    ]),
                     const Text.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -662,7 +1055,7 @@ class HomeState extends State<Home> {
                   ]),
                 ))
               ],
-            ),
+            ),*/
             const SizedBox(
               height: 20,
             ),
